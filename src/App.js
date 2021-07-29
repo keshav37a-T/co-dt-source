@@ -15,8 +15,6 @@ function App() {
     window.addEventListener(
       "message",
       (event) => {
-        console.log(`recieved data from - ${event.origin}`);
-        console.log(event.data);
         if (event.data === "target loaded") {
           newWindow.postMessage(data, "https://co-dt-target.herokuapp.com");
           cogoToast.success("Data sent from source");
