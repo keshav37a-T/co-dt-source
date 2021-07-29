@@ -1,4 +1,5 @@
 import { useRef, useEffect } from "react";
+import cogoToast from "cogo-toast";
 import "./App.css";
 
 var newWindow;
@@ -18,14 +19,7 @@ function App() {
         console.log(event.data);
         if (event.data === "target loaded") {
           newWindow.postMessage(data, "https://co-dt-target.herokuapp.com");
-        }
-        if (event.origin === "https://co-dt-target.herokuapp.com") {
-          console.log("EVENT RECIEVED FROM TARGET IN SOURCE");
-          return;
-        }
-        if (event.origin === "https://co-dt-source.web.app") {
-          console.log("EVENT RECIEVED FROM SOURCE IN SOURCE");
-          return;
+          cogoToast.success("Data sent from source");
         }
       },
       false
